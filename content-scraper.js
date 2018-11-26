@@ -84,5 +84,3 @@ const contentScraper = () => {
 }
 
 contentScraper();
-
-module.exports.scraper = contentScraper;
