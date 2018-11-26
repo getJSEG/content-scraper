@@ -1,0 +1,33 @@
+{
+  "name": "content-scraper",
+  "version": "0.0.1",
+  "description": "A content scraper for Shirst4mike.com",
+  "main": "content-scraper.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "file-system": "^2.2.2",
+    "json2csv": "^4.3.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start":"node content-scraper.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getJSEG/content-scraper.git"
+  },
+  "keywords": [
+    "content-scraper"
+  ],
+  "author": "Elmer Gonzalez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getJSEG/content-scraper/issues"
+  },
+  "homepage": "https://github.com/getJSEG/content-scraper#readme"
+}
