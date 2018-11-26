@@ -1,5 +1,5 @@
 {
-  "name": "content-scraper",
+  "name": "Scraper",
   "version": "0.0.1",
   "description": "A content scraper for Shirst4mike.com",
   "main": "content-scraper.js",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "start":"node content-scraper.js"
+    "start":"node scraper.js"
   },
   "repository": {
     "type": "git",
