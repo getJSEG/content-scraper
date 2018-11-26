@@ -3,16 +3,16 @@ const requestP = require("request-promise");
 const Json2csvParser = require('json2csv').Parser;
 const cheerio = require("cheerio");
 const fs = require('fs');
-const date = new Date();
 
+const date = new Date();
 const day = ['Sun', 'Mon', 'Tues', 'Web', 'Thur','Fri', 'Sat'];
 const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 const url = "http://shirts4mike.com";
 const allShirts = [];
-let allShirtsInformationArray = [];
+const allShirtsInformationArray = [];
 
-//call back function fot a website Request
+//call back function for a website Request
 const request = (websiteUrl, selectEl) => {
      const options = {
          url:websiteUrl,
@@ -24,25 +24,25 @@ const request = (websiteUrl, selectEl) => {
          errorLog(error.message);
      });
 }
-//redirecting from the (http://www.shirts4mike.com/shirt.php) to where the shirt information is ex.(http://www.shirts4mike.com/shirt.php?id=101) and gettin all the information needed
+//redirecting from the ex. (http://www.shirts4mike.com/shirt.php) 
+//To Shirst Links ex. (http://www.shirts4mike.com/shirt.php?id=101) and extracting the data needed
 const shirtsInformation = () => {
     
     for(let shirstInfo of allShirts){
         request(`${url}/${shirstInfo}`, ($) => {
             //store the information for each shirt in an object
             allShirtsInformationArray.push({
-                'shirt':shirstInfo.split('.php?id=').join('-'),
                 'image' : `${url}/${$('.shirt-picture').find('img').attr('src')}`,
                 'price':$('.shirt-details').find('.price').text() ,
                 'url':`${url}/${shirstInfo}`,
                 'title': $('.shirt-details').find('h1').text().replace(/[^a-zA-Z\s!?]+/g, '' )
             });
-            createCSVFile(allShirtsInformationArray)
+            createCSVFile(allShirtsInformationArray);
         })
     } 
 }
 
-//create a folder named data in the current directory with a csv File, if there isn't one already. else just create the csv File in the data folder
+//create a folder named data in the current directory with a csv File, if there isn't one already. else just create the csv File in the data folder and averride the existing data
 const createCSVFile = (ShirtInfo) => {
   if (fs.existsSync(`${process.cwd()}/data`)) {         
       fs.writeFile(`${process.cwd()}/data/${date.getFullYear()}-${date.getDate()}-${date.getMonth()+1}.csv`, parseToCSV(ShirtInfo), 'utf8', (error) => { if(error) throw errorLog(error) });    
@@ -54,7 +54,7 @@ const createCSVFile = (ShirtInfo) => {
 
 //parses the array object to a csv file
 const parseToCSV = (dataObject) => {
-    const fields = JSON.stringify(['shirt', 'image', 'price', 'url', 'title']);
+    const fields = JSON.stringify(['image', 'price', 'url', 'title']);
     
     try {
       const parser = new Json2csvParser(fields);
