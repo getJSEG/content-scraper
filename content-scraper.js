@@ -6,7 +6,7 @@ const fs = require('fs');
 const date = new Date();
 
 const day = ['Sun', 'Mon', 'Tues', 'Web', 'Thur','Fri', 'Sat'];
-const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];;
+const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 const url = "http://shirts4mike.com";
 const allShirts = [];
