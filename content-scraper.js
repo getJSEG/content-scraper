@@ -21,7 +21,8 @@ const request = (websiteUrl, selectEl) => {
         }
      }
     return requestP(options).then(selectEl).catch((error) => {         
-         errorLog(error.message);
+         errorLog(error.message);        
+        console.log('There’s been a 404 error. Cannot connect to http://shirts4mike.com.')
      });
 }
 //redirecting from the ex. (http://www.shirts4mike.com/shirt.php) 
